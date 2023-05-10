@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sports Quiz</title>
-</head>
-<body>
-
-    <div class="quiz-container" id="quiz">
-        <div class="quiz-header">
-            <h2 id="question">Question Text</h2>
-            <ul>
-                <li>
-                    <input type="text" name="answer" id="a" class="answer">
-                    <label for="a" id="a_text">answer</label>
-                </li>
-                <li>
-                    <input type="text" name="answer" id="b" class="answer">
-                    <label for="b" id="b_text">answer</label>
-                </li>
-                <li>
-                    <input type="text" name="answer" id="c" class="answer">
-                    <label for="c" id="c_text">answer</label>
-                </li>
-                <li>
-                    <input type="text" name="answer" id="d" class="answer">
-                    <label for="d" id="d_text">answer</label>
-                </li>
-            
-            </ul>
+    <head>
+        <meta charset="UTF-8">
+        <title>Code Quiz</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+        <div id="start screen">
+        <p>Press Start to begin the Quiz</p>
+        <button id="start-btn">Start</button>
         </div>
-        <button id="submit">Submit</button>
+        <div id="quiz-screen">
+            <div id="quiz-header">
+              <span id="timer">Time: 60s</span>
+              <span id="score">Score: 0</span>
+        </div>
+        <div id="quiz-body">
+            <p id="questions"></p>
+            <div id="answers">
+                <button class="btn btn-secondary"></button>
+                <button class="btn btn-secondary"></button>
+                <button class="btn btn-secondary"></button>
+                <button class="btn btn-secondary"></button>
+            </div>
+        </div>
     </div>
-   
-
-
-
-    <script src="script.js"></script>
-    
+    <div id="game-over-screen">
+        <h2>Game Over</h2>
+        <p>Your Score Is <span id="Final Score"></span>.</p>
+        <form>
+            <div class="form-group">
+                <label for="initials">Enter Your initials:</label>
+                <input type="text" class="form-control" id="initials" maxlength="3">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+     </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

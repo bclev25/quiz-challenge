@@ -1,101 +1,74 @@
-const quizData = [
+const questions = [
     {
-        question: "What Sport is This?",
-        a: "Basketball",
-        b: "Soccer",
-        c: "Football",
-        d: "Baseball",
-        correct: "a",
+        question: "Who is the G.O.A.T of basketball",
+        answers: [
+            "Micheal Jordan",
+            "Lebron James",
+            "Larry Bird",
+            "Kobe Bryant"
+        ],
+        correctIndex: 2
     },
     {
-        question: "What Sport is This?",
-        a: "Basketball",
-        b: "Soccer",
-        c: "Football",
-        d: "Baseball",
-        correct: "c",
+        question: "Who won the 2016 NBA Finals",
+        answers: [
+            "Golden State Warriors",
+            "San Antonio Spurs",
+            "Miami Heat",
+            "Orlando Magic"
+        ],
+        correctIndex: 1
     },
     {
-        question: "What Sport is This?",
-        a: "Basketball",
-        b: "Soccer",
-        c: "Football",
-        d: "Baseball",
-        correct: "b",
+        question: "Who scored the most points in NBA history",
+        answers: [
+            "Karl Malone",
+            "Kareem Abdul-Jabbar",
+            "Lebron James",
+            "Kobe Bryant"
+        ],
+        correctIndex: 3
     },
-    {
-        question: "What Sport is This?",
-        a: "Basketball",
-        b: "Soccer",
-        c: "Football",
-        d: "Baseball",
-        correct: "d",
-    }
-
-
 ];
 
-const quiz= document.getElementById("quiz")
-const answerEls = document.querySelectorAll(".answer")
-const questionEl= document.getElementById("question")
-const a_text= document.getElementById("a_text")
-const b_text= document.getElementById("b_text")
-const c_text= document.getElementById("c_text")
-const d_text= document.getElementById("d_text")
-const submitBtn = document.getElementById("submit")
+let currentQuestion = 0;
+let score = 0;
 
-
-let currentQuiz = 0
-let score = 0 
-
-loadQuiz()
-
-function loadQuiz() {
-
-    deselectAnswers()
-
-    const currentQuizData = quizData[currentQuiz]
-
-    questionEl.innerText = currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
+function displayQuestion() {
+    const question = questions[currentQuestion];
+    const answersHtml = question.answers.map((answer,index) => `
+    <button class="answer-btn" data-index="${index}">${answer}</button>`
+    ).join('');
+    document.getElementById("question").textContent = question.question;
+    document.getElementById("answers").innerHTML = answersHtml;
 }
 
-function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEl.checked = false)
-}
-
-function getSelected() {
-    let answer
-    answerEls.forEach(answerEl => {
-        if(answerEl.checked) {
-            answer = answerEl.id
-        }
-    })
-    return answer
-}
-
-
-submitBtn.addEventListener("click" , () => {
-    const answer = getSelected()
-    if(answer) {
-        if(answer === quizData[currentQuiz].correct) {
-        score++
-    }
-
-    currentQuiz++
-
-    if(currentQuiz < quizData.length) {
-        loadQuiz()
-    } else{
-        quiz.innerHTML = `
-        <h2> You answered ${score}/${quizData.length} questions correctly</h2>
-
-        <button onclick="location.reload()">Reload</button>
-        `
+function checkAnswer(answerIndex) {
+    const question = questions[currentQuestion];
+    if (answerIndex === question.correctIndex) {
+        score++;
     }
 }
 
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion === questions.length) {
+        endGame();
+    } else {
+        displayQuestion();
+    }
+}
+
+function endGame() {
+    document.getElementById("question").textContent = "Your final score is ${score}/${questions.length}.";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("submit-btn").style.display = "none";
+}
+
+document.getElementById("submit-btn").addEventListener("click", () => {
+    const answersBtns = document.querySelectorAll(".answers-btn");
+    answersBtns.forEach((btn) => {
+        btn.disabled = true;
+    });
+   
 })

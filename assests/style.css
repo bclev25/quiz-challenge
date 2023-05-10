@@ -1,63 +1,26 @@
-
-
-
-
-
-*{
-    box-sizing: border-box;
-}
-body{
-    background-color:white ;
-    background-image: black;
-    font-family: "", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    margin: 0;
-}
-.quiz-container{
-    background-color: blue;
-    border-radius: 10px;
-    box-shadow: 0;
-    width: 500px;
-    overflow: hidden;
-}
-.quiz-header{
-    padding: 6rem;
-}
-h2{
-    padding: 2rem;
-    text-align: center;
-    margin: 0;
+#quiz-body {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-ul{
-    list-style-type: none;
-    padding: 0%;
-}
-ul li {
-    font-size: 2rem;
-    margin: 2rem 0;
-}
-ul li label {
-    cursor: pointer;
-}
-button {
-    background-color: blue;
-    color: white;
-    border: none;
+#answers button {
     display: block;
+    margin-bottom: 10px;
     width: 100%;
-    cursor: pointer;
-    font-size: 2rem;
-    font-family: inherit;
-    padding: 2;
 }
-button:hover {
-    background-color: aqua;
+
+#game-over-screen {
+    text-align: center;
+    margin-top: 50px;
 }
-button:focus {
-    outline: none;
-    background-color: blue;
+
+#game-over-screen label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#game-over-screen input {
+    text-transform: uppercase;
+    text-align: center;
 }
