@@ -37,6 +37,7 @@
 
     <div id="quizContainer" style="display: none;">
         <h2 id="questionHeading"></h2>
+        <section id="answerResponse"></section>
         <ul>
             <div id="choices">
                 <button id="answerChoiceA"></button>
@@ -56,16 +57,13 @@
            </li>
          </ul>
         </div>
-        <section id="answerResponse"></section>
 </body>
-
-<section id="answerResponse"></section>
 
 <div id="game_over" style="display: none;">
     <h2> Game Over</h2>
     Your Score Was: <var id="end_score"></var>
 </br>
-Initials: <input type="button" value="initials" id="initials">
+Initials: <input type="text" id="initials">
 </br>
 <input type="button" value="Submit" id="submit_initials" onclick="submit_score()">
 </div>
@@ -73,7 +71,7 @@ Initials: <input type="button" value="initials" id="initials">
 <div id="high_scores_page" style="display: none;">
     <h2> High Scores</h2>
     <div id="high_scores"></div>
-    <input type="button" id="Clear Highscores" value="clear" onclick="clear_hs()">
+    <input type="button" id="clear_highscores" value="clear" onclick="clear_hs()">
 </div>
 
 <script src="script.js"></script>

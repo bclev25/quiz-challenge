@@ -10,7 +10,6 @@ var answerChoiceA = document.getElementById("answerChoiceA");
 var answerChoiceB = document.getElementById("answerChoiceB");
 var answerChoiceC = document.getElementById("answerChoiceC");
 var answerChoiceD = document.getElementById("answerChoiceD");
-var correctAnswer = document.getElementById("correctAnswer");
 var high_scores = [];
 var output = "";
 var score = 0;
@@ -42,16 +41,16 @@ var questionsArray = [
 var countdownTimerInterval = setInterval(setCountDownTimer, 1000);
 
 function setCountDownTimer() {
-    if(time_start)
+    if(time_start) {
     time--;
     if(time<= 0) {
-        end_quiz();
-        time = 0;
+    time = 0;
     }
     document.getElementById("timer").innerHTML = time;
 }
+}
 
-startBtn.addEventListener("click", function() {
+startBtn.addEventListener('click', function() {
     quizContainer.style.display = "block";
     homeContainer.style.display = "none";
     countdownTimer.style.display = "block";
@@ -72,22 +71,21 @@ function setQuizQuestions() {
 
 answerChoiceA.addEventListener('click', function(event) {
     event.stopPropagation();
-    correctAnswer = questionsArray[i].correctAnswer;
+    var correctAnswer = questionsArray[i].correctAnswer;
     console.log("correctAnswer" + "correctAnswer");
     if (0 === correctAnswer) {
-        document.getElementById("AnswerResponse").innerHTML = "Correct!!";
+        document.getElementById("answerResponse").innerHTML = "Correct!!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
-        },
-        1000
-        )
+            document.getElementById("answerResponse").innerHTML = "";
+        },1000);
+        
     score++;
 document.getElementById("score").innerHTML = score;
 } else {
     time_remaining -= 5;
-    document.getElementById("AnswerResponse").innerHTML = "Incorrect!!";
+    document.getElementById("answerResponse").innerHTML = "Incorrect!!";
     setTimeout(function() {
-        document.getElementById("AnswerResponse").innerHTML = "";
+        document.getElementById("answerResponse").innerHTML = "";
     },
     1000
     );
@@ -105,9 +103,9 @@ answerChoiceB.addEventListener('click', function(event) {
     correctAnswer = questionsArray[i].correctAnswer;
     console.log("correctAnswer" + "correctAnswer");
     if (1 === correctAnswer) {
-        document.getElementById("AnswerResponse").innerHTML = "Correct!!";
+        document.getElementById("answerResponse").innerHTML = "Correct!!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("answerResponse").innerHTML = "";
         },
         1000
         )
@@ -115,9 +113,9 @@ answerChoiceB.addEventListener('click', function(event) {
 document.getElementById("score").innerHTML = score;
 } else {
     time_remaining -= 5;
-    document.getElementById("AnswerResponse").innerHTML = "Incorrect!!";
+    document.getElementById("answerResponse").innerHTML = "Incorrect!!";
     setTimeout(function() {
-        document.getElementById("AnswerResponse").innerHTML = "";
+        document.getElementById("answerResponse").innerHTML = "";
     },
     1000
     );
@@ -130,14 +128,14 @@ if (i>= questionsArray.length -1) {
 };
 });
 
-answerChoiceA.addEventListener('click', function(event) {
+answerChoiceC.addEventListener('click', function(event) {
     event.stopPropagation();
     correctAnswer = questionsArray[i].correctAnswer;
     console.log("correctAnswer" + "correctAnswer");
     if (2 === correctAnswer) {
-        document.getElementById("AnswerResponse").innerHTML = "Correct!!";
+        document.getElementById("answerResponse").innerHTML = "Correct!!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("answerResponse").innerHTML = "";
         },
         1000
         )
@@ -145,9 +143,9 @@ answerChoiceA.addEventListener('click', function(event) {
 document.getElementById("score").innerHTML = score;
 } else {
     time_remaining -= 5;
-    document.getElementById("AnswerResponse").innerHTML = "Incorrect!!";
+    document.getElementById("answerResponse").innerHTML = "Incorrect!!";
     setTimeout(function() {
-        document.getElementById("AnswerResponse").innerHTML = "";
+        document.getElementById("answerResponse").innerHTML = "";
     },
     1000
     );
@@ -160,14 +158,14 @@ if (i>= questionsArray.length -1) {
 };
 });
 
-answerChoiceA.addEventListener('click', function(event) {
+answerChoiceD.addEventListener('click', function(event) {
     event.stopPropagation();
     correctAnswer = questionsArray[i].correctAnswer;
     console.log("correctAnswer" + "correctAnswer");
     if (3 === correctAnswer) {
-        document.getElementById("AnswerResponse").innerHTML = "Correct!!";
+        document.getElementById("answerResponse").innerHTML = "Correct!!";
         setTimeout(function() {
-            document.getElementById("AnswerResponse").innerHTML = "";
+            document.getElementById("answerResponse").innerHTML = "";
         },
         1000
         )
@@ -175,9 +173,9 @@ answerChoiceA.addEventListener('click', function(event) {
 document.getElementById("score").innerHTML = score;
 } else {
     time_remaining -= 5;
-    document.getElementById("AnswerResponse").innerHTML = "Incorrect!!";
+    document.getElementById("answerResponse").innerHTML = "Incorrect!!";
     setTimeout(function() {
-        document.getElementById("AnswerResponse").innerHTML = "";
+        document.getElementById("answerResponse").innerHTML = "";
     },
     1000
     );
@@ -195,7 +193,7 @@ function end_quiz() {
     document.getElementById("quizContainer").style.display = "none";
     document.getElementById("countDownTimer").style.display = "none";
     document.getElementById("score_keeper").style.display = "none";
-    document.getElementById("AnswerResponse").innerHTML= "";
+    document.getElementById("answerResponse").innerHTML= "";
     document.getElementById("end_score").innerHTML= score;
 }
 
@@ -204,7 +202,7 @@ function submit_score () {
     view_high_scores();
 }
 
-localStorage.setItem("score", JSON.stringify(AnswersResponse));
+localStorage.setItem("score", JSON.stringify(high_scores));
 localStorage.setItem("initials", JSON.stringify(initials));
 
 function view_high_scores() {
